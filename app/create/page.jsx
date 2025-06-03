@@ -9,6 +9,7 @@ import LogoDesc from './LogoDesc'
 import LogoColourPalette from './LogoColourPalette'
 import LogoDesign from './LogoDesign'
 import LogoIdea from './LogoIdea'
+import PricingPlan from './PricingPlan'
 
 const page = () => {
 
@@ -41,7 +42,9 @@ const page = () => {
                  <LogoDesign handleInputChange={(value)=>handleInputChange('design',value)} formDesign={formData.design}/>:
                 step == 5 ?
                  <LogoIdea handleInputChange={(value)=>handleInputChange('idea',value)} formData={formData}/>:
-                null
+                step == 6 ?
+                <PricingPlan formData={formData}/>:
+                 null
                 }
                 <CardContent className="flex justify-between">
                     <div className="flex flex-wrap items-center gap-2">
