@@ -30,8 +30,6 @@ export function CarouselPlugin() {
     setexampleimagesList(images);
   }, []);
 
-  console.log(exampleimagesList)
-
   const plugin = React.useRef(
     Autoplay({ delay: 2000, stopOnInteraction: true })
   )
