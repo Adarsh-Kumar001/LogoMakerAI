@@ -33,11 +33,11 @@ const page = () => {
 
   useEffect(() => {
     if (
-      formData?.title &&
-      formData?.description &&
-      formData?.palette &&
-      formData?.idea &&
-      formData?.design?.title &&
+      formData?.title ||
+      formData?.description ||
+      formData?.palette ||
+      formData?.idea ||
+      formData?.design?.title ||
       formData?.design?.prompt
     ) {
       generateAILogo();
@@ -151,7 +151,7 @@ const page = () => {
             </div>
           </div>
         </div>
-        <div className="w-[100%] flex md:flex-row flex-col justify-center gap-2 md:mb-0 mb-5 mt-5 md:p-0 p-2">
+        <div className="w-[100%] flex md:flex-row flex-col justify-center gap-2 mb-5 mt-5 md:p-0 p-2">
           <Button variant='outline' onClick={() => { window.location.reload() }} className={`hover:cursor-pointer opacity-0 ${imageUrl && 'opacity-100'}`}> &#8635; Generate Again</Button>
           <Button onClick={() => { window.location.href = '/' }} className={`hover:cursor-pointer opacity-0 ${imageUrl && 'opacity-100'}`}>Generate Another Logo</Button>
         </div>
