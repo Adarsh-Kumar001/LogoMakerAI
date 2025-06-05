@@ -54,7 +54,7 @@ const page = () => {
                       {step!=1 && <Button onClick={()=>{setstep(step-1)}} variant="outline" className="hover:cursor-pointer">Previous</Button>}
                     </div>
                     <div className="flex flex-wrap items-center gap-2">
-                        <Button onClick={()=>{setstep(step+1)}} className="hover:cursor-pointer">Next</Button>
+                        {step!=6 && <Button onClick={()=>{setstep(step+1)}} className="hover:cursor-pointer">Next</Button>}
                     </div>
                 </CardContent>
                 </Suspense>
