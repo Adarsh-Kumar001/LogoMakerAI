@@ -32,7 +32,7 @@ const page = () => {
 
         <div className='w-full'>
             <Navbar />
-
+            <div className='fixed opacity-80 md:text-base text-xs top-[3.5rem] text-black font-bold bg-red-600'>&#9888;Important&#9888; Please Fill All The Fields To Generate The Logo Without Any Issues &#9888;</div>
             <Card className="md:w-[45%] w-[90%] mx-auto md:mt-[14rem] md:mb-[16rem] mt-[12rem] mb-[16rem]">
                 <Suspense fallback={<div>Loading...</div>}>
                 {step == 1 ?
