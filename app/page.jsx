@@ -1,6 +1,7 @@
 import Navbar from "@/components/Navbar";
 import Lander from "@/components/Lander";
 import SiteDetails from "@/components/SiteDetails";
+import Footer from "@/components/Footer";
 
 export default function Home() {
 
@@ -9,6 +10,7 @@ export default function Home() {
        <Navbar/>
        <Lander/>
        <SiteDetails/>
+       <Footer/>
     </div>
   );
 }

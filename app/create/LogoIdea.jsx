@@ -26,7 +26,7 @@ const LogoIdea = ({ handleInputChange, formData }) => {
         .replace('{logoTitle}', formData?.title)
         .replace('{logoDesc}',formData?.description)
         .replace('{logoPrompt}', formData?.design.prompt)
-        const result = await axios.post('/api/gemini',{
+        const result = await axios.post('/api/geminiIdeas',{
             prompt: PROMPT
         })
         

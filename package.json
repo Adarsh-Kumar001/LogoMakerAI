@@ -27,6 +27,7 @@
     "tailwind-merge": "^3.3.0"
   },
   "devDependencies": {
+    "@gradio/client": "^1.15.1",
     "@tailwindcss/postcss": "^4",
     "@types/node": "^22.15.29",
     "tailwindcss": "^4",

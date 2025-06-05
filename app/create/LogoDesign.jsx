@@ -20,7 +20,7 @@ const LogoDesign = ({handleInputChange, formDesign}) => {
         {Design.map((design,index)=>(
             <div key={index} onClick={()=>{setchosenDesign(design); handleInputChange(design)}} className={`flex flex-col p-1 justify-center content-center hover:cursor-pointer ${chosenDesign?.title==design.title&&'border-[1.5px] border-black'}`}>
              <h5 className='mb-2 text-xs mx-auto'>{design.title}</h5>
-             <Image src={`/images/designs${design.image}`} width={300} height={200} alt={`design ${index+1}`} className='mx-auto h-[150px] object-cover'/>
+             <Image src={`/images/designs${design.image}`} width={300} height={200} alt={`design ${index+1}`} className='mx-auto md:h-[150px] h-[80px] object-cover'/>
             </div>
         ))}
       </div>

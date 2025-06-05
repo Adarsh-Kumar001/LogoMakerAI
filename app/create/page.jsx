@@ -10,6 +10,7 @@ import LogoColourPalette from './LogoColourPalette'
 import LogoDesign from './LogoDesign'
 import LogoIdea from './LogoIdea'
 import PricingPlan from './PricingPlan'
+import Footer from '@/components/Footer'
 
 const page = () => {
 
@@ -31,7 +32,7 @@ const page = () => {
         <div className='w-full'>
             <Navbar />
 
-            <Card className="w-[45%] mx-auto mt-[13rem] mb-[8rem]">
+            <Card className="md:w-[45%] w-[90%] mx-auto md:mt-[14rem] md:mb-[16rem] mt-[12rem] mb-[16rem]">
                 {step == 1 ?
                     <LogoTitle handleInputChange={(value)=>handleInputChange('title',value)}/> :
                 step == 2 ?
@@ -55,7 +56,7 @@ const page = () => {
                     </div>
                 </CardContent>
             </Card>
-
+            <Footer/>
         </div>
     )
 }

@@ -37,7 +37,7 @@ export function CarouselPlugin() {
   return (
     <Carousel
       plugins={[plugin.current]}
-      className="w-full max-w-xs mt-[8rem] ml-4"
+      className="md:w-full w-[50%] mx-auto max-w-xs mt-[8rem] md:ml-5"
       onMouseEnter={plugin.current.stop}
       onMouseLeave={plugin.current.reset}
     >
@@ -46,7 +46,7 @@ export function CarouselPlugin() {
           <CarouselItem key={index}>
             <div className="p-1">
               <Card>
-                <CardContent className="flex aspect-square items-center justify-center p-6">
+                <CardContent className="flex aspect-square items-center justify-center md:p-6">
                   <Image key={index} src={image} alt={`example ${index + 1}`} />
                 </CardContent>
               </Card>
@@ -54,7 +54,7 @@ export function CarouselPlugin() {
           </CarouselItem>
         ))}
       </CarouselContent>
-      <CarouselPrevious />
+      <CarouselPrevious/>
       <CarouselNext />
     </Carousel>
   )

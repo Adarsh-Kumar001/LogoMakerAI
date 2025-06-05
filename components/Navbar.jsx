@@ -7,7 +7,7 @@ import Link from 'next/link';
 import { SignInButton, SignOutButton, UserButton, useUser } from '@clerk/nextjs';
 
 
-export default function Navbar() {
+export default function  Navbar() {
 
    const {user} = useUser();
 
@@ -16,7 +16,7 @@ export default function Navbar() {
       <div className='ml-5 hover:cursor-pointer'>
         <Link href="/" className='flex gap-2 h-[100%]'>
         <Image className='w-[2rem] h-[1.5rem] my-auto hover:cursor-pointer' src={Logo} alt="logo"/>
-        <h2 className='my-auto font-bold'>LogoMakerAI</h2>
+        <h2 className='my-auto font-bold hidden md:block'>LogoMakerAI</h2>
        </Link>
       </div>
       {user? 
@@ -24,7 +24,7 @@ export default function Navbar() {
         <div className="flex flex-wrap items-center gap-2 mr-5">
         <Button onClick={()=>{window.location.href='/dashboard'}} variant='outline' className="hover:cursor-pointer">Dashboard</Button>
       </div>
-      <div className='mr-5 my-auto'>
+      <div className='mr-5 h-full flex items-center'>
       <UserButton afterSwitchSessionUrl='/'/>
       </div>
       </div>

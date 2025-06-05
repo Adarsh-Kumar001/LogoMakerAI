@@ -19,7 +19,7 @@ const LogoColourPalette = ({handleInputChange, formPalette}) => {
         {Colors.map((palette,paletteIndex)=>(
            <div className={`flex p-1 hover:cursor-pointer ${chosenPalette==palette.name&&'border-[1.5px] border-black'}`} key={paletteIndex}>
             {palette?.colors.map((colour,index)=>(
-              <div className='h-24 w-full'
+              <div className='md:h-24 h-20 w-full'
               key={index}
               onClick={()=>{setchosenPalette(palette.name);
                 handleInputChange(palette.name)

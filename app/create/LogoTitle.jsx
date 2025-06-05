@@ -15,7 +15,7 @@ const LogoTitle = ({handleInputChange}) => {
     
 
   return (
-    <div className="mx-auto w-[92%]">
+    <div className="mx-auto full w-[92%]">
       <h6 className="mx-auto capitalize text-xl">Enter the title of your Logo</h6>
       <p className="mx-auto capitalize text-sm text-gray-600 italic mt-1">Write a title to name your brand or product.</p>
       <div>

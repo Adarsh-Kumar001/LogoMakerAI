@@ -25,14 +25,14 @@ const SiteDetails = () => {
   return (
     <div className='w-full mt-[12rem] bg-white border-t-2 border-black flex flex-col'>
         <h1 className='text-black font-extrabold text-3xl mx-auto mt-[2rem]'>Logo Maker AI</h1>
-        <div className='w-full flex flex-wrap mt-5'>
+        <div className='w-full flex flex-wrap mt-5 mb-10'>
          {logoMakerFeatures.map((item, index)=>(
             <Card key={index} className="w-[20rem] h-[15rem] flex flex-col m-7 bg-gradient-to-r from-[#f9e1e3]  to-[#d0faf1] shadow-[5px_5px_0px_0px_rgba(0,_0,_0,_0.5)]">
-            <CardTitle className="mx-auto font-bold">
+            <CardTitle className="mx-auto font-bold md:text-base text-xs">
                 {item.title}
             </CardTitle>
             <CardContent>
-                <p className='text-justify text-sm'>{item.description}</p>
+                <p className='text-justify text-xs md:text-sm'>{item.description}</p>
             </CardContent>
          </Card>
          ))}
