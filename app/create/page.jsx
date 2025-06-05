@@ -11,6 +11,7 @@ import LogoDesign from './LogoDesign'
 import LogoIdea from './LogoIdea'
 import PricingPlan from './PricingPlan'
 import Footer from '@/components/Footer'
+import { Suspense } from 'react'
 
 const page = () => {
 
@@ -33,8 +34,9 @@ const page = () => {
             <Navbar />
 
             <Card className="md:w-[45%] w-[90%] mx-auto md:mt-[14rem] md:mb-[16rem] mt-[12rem] mb-[16rem]">
+                <Suspense fallback={<div>Loading...</div>}>
                 {step == 1 ?
-                    <LogoTitle handleInputChange={(value)=>handleInputChange('title',value)}/> :
+                  <LogoTitle handleInputChange={(value)=>handleInputChange('title',value)}/> :
                 step == 2 ?
                   <LogoDesc handleInputChange={(value)=>handleInputChange('description',value)} formDesc={formData.description}/> :
                 step == 3 ?
@@ -55,6 +57,7 @@ const page = () => {
                         <Button onClick={()=>{setstep(step+1)}} className="hover:cursor-pointer">Next</Button>
                     </div>
                 </CardContent>
+                </Suspense>
             </Card>
             <Footer/>
         </div>
