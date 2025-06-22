@@ -39,8 +39,6 @@ LogoMakerAI is an logo generation tool that allows users to create unique, profe
 
 ## 🛠️ Tech Stack
 
-## 🛠️ Tech Stack
-
 | Layer             | Technology                          |
 |------------------|--------------------------------------|
 | Frontend          | Next.js , Tailwind CSS |
