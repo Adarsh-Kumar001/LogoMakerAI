@@ -49,7 +49,7 @@ LogoMakerAI is an logo generation tool that allows users to create unique, profe
 | Hosting           | Vercel                 |
 
 
----
+
 
 ## 📦 Setup Instructions
 
