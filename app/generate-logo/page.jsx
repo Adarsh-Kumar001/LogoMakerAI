@@ -17,7 +17,7 @@ const page = () => {
   const [formData, setformData] = useState()
 
   const [imageUrl, setimageUrl] = useState()
-  const [secondimageUrl, setsecondimageUrl] = useState()
+
 
   useEffect(() => {
 
@@ -33,11 +33,11 @@ const page = () => {
 
   useEffect(() => {
     if (
-      formData?.title &&
-      formData?.description &&
-      formData?.palette &&
-      formData?.idea &&
-      formData?.design?.title &&
+      formData?.title ||
+      formData?.description ||
+      formData?.palette ||
+      formData?.idea ||
+      formData?.design?.title ||
       formData?.design?.prompt
     ) {
       generateAILogo();
@@ -72,14 +72,13 @@ const page = () => {
       }
       else {
         console.log(res)
-        const imgUrl = res.data.data[0][0].image.url;
-        const imgUrlTwo = res.data.data[0][1].image.url;
-        console.log("Generated Image URL:", imgUrl, imgUrlTwo);
+        const imgUrl = res.data.data[0]?.url;
+        console.log("Generated Image URL:", imgUrl);
         setimageUrl(imgUrl)
-        setsecondimageUrl(imgUrlTwo)
+  
 
         //save image to firestore
-        saveImagesToDB({ imgUrl, imgUrlTwo });
+        saveImagesToDB({ imgUrl });
       }
 
     }
@@ -88,12 +87,11 @@ const page = () => {
     }
   }
 
-  const saveImagesToDB = async ({ imgUrl, imgUrlTwo }) => {
+  const saveImagesToDB = async ({ imgUrl }) => {
     console.log(imgUrl)
     try {
       await setDoc(doc(db, "Users", userDetails.email, "logos", Date.now().toString()), {
         image: imgUrl,
-        secondImage: imgUrlTwo,
         title: formData?.title,
         desc: formData?.description
       })
@@ -128,7 +126,7 @@ const page = () => {
       <Navbar />
       <div className="mx-auto md:w-[65%] w-[90%] mb-[8rem] mt-[8rem] bg-gray-100 shadow-[0_3px_10px_rgb(0,0,0,0.2)] rounded-sm flex flex-col justify-center">
         <h6 className="mx-auto capitalize text-xl mt-5">YOUR LOGO</h6>
-        <p className="mx-auto capitalize text-sm text-gray-600 italic mt-1 mb-5">Your logo is {imageUrl || secondimageUrl ? 'generated' : 'generating, please wait'}</p>
+        <p className="mx-auto capitalize text-sm text-gray-600 italic mt-1 mb-5">Your logo is {imageUrl ? 'generated' : 'generating, please wait'}</p>
         <div className='w-[100%] flex md:flex-row flex-col'>
           <div className='flex flex-col md:w-[50%] w-full mx-auto items-center'>
             <div className='md:w-[25rem] md:h-[25rem] w-[80%] flex justify-center mx-auto'>
@@ -140,18 +138,8 @@ const page = () => {
               <Button onClick={() => { handleDownload(imageUrl) }} className={`hover:cursor-pointer md:mt-0 mt-2 opacity-0 ${imageUrl && 'opacity-100'}`}>Download</Button>
             </div>
           </div>
-          <div className='flex flex-col md:w-[50%] w-full mx-auto md:mt-0 mt-3 items-center'>
-            <div className='md:w-[25rem] md:h-[25rem] w-[80%] flex justify-center mx-auto'>
-              {secondimageUrl ? <img className='md:w-[25rem] md:h-[25rem] w-[80%]' src={secondimageUrl} /> : <div className="w-[25rem] h-[25rem] flex justify-center items-center">
-                <ScaleLoader />
-              </div>}
-            </div>
-            <div className="flex flex-wrap items-center gap-2 mt-5">
-              <Button onClick={() => { handleDownload(secondimageUrl) }} className={`hover:cursor-pointer md:mt-0 mt-2 opacity-0 ${secondimageUrl && 'opacity-100'}`}>Download</Button>
-            </div>
-          </div>
         </div>
-        <div className="w-[100%] flex md:flex-row flex-col justify-center gap-2 md:mb-0 mb-5 mt-5 md:p-0 p-2">
+        <div className="w-[100%] flex md:flex-row flex-col justify-center gap-2 mb-5 mt-5 md:p-0 p-2">
           <Button variant='outline' onClick={() => { window.location.reload() }} className={`hover:cursor-pointer opacity-0 ${imageUrl && 'opacity-100'}`}> &#8635; Generate Again</Button>
           <Button onClick={() => { window.location.href = '/' }} className={`hover:cursor-pointer opacity-0 ${imageUrl && 'opacity-100'}`}>Generate Another Logo</Button>
         </div>

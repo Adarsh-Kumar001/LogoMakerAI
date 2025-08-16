@@ -23,7 +23,7 @@ export async function POST(req) {
   try {
     const { prompt } = await req.json();
 
-    const model = 'gemini-2.5-flash-preview-04-17';
+    const model = 'gemini-2.5-flash';
     const config = { responseMimeType: 'text/plain' };
 
     const history = [

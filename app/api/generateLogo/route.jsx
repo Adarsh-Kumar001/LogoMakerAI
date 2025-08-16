@@ -6,19 +6,17 @@ export async function POST(req) {
     const { prompt } = await req.json();
 
     // Connect to the Hugging Face Space via Gradio client
-    const client = await Client.connect("Dagfinn1962/Midjourney-Free");
+    const client = await Client.connect("multimodalart/Qwen-Image-Fast");
 
     // Call the /run endpoint with parameters, including the prompt
-    const result = await client.predict("/run", {
+    const result = await client.predict("/infer", {
       prompt: prompt,
-      negative_prompt: "(deformed iris, deformed pupils, semi-realistic, cgi, 3d, render, sketch, cartoon, drawing, anime:1.4), text, close up, cropped, out of frame, worst quality, low quality, jpeg artifacts, ugly, duplicate, morbid, mutilated, extra fingers, mutated hands, poorly drawn hands, poorly drawn face, mutation, deformed, blurry, dehydrated, bad anatomy, bad proportions, extra limbs, cloned face, disfigured, gross proportions, malformed limbs, missing arms, missing legs, extra arms, extra legs, fused fingers, too many fingers, long neck",
-      use_negative_prompt: true,
-      style: "2560 x 1440",
       seed: 0,
-      width: 512,
-      height: 512,
-      guidance_scale: 0.1,
       randomize_seed: true,
+      aspect_ratio: "1:1",
+      guidance_scale: 1,
+      num_inference_steps: 4,
+      prompt_enhance: true,
     });
 
     // result.data contains the response (likely base64 image or URL)

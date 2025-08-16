@@ -51,7 +51,6 @@ const LogoList = () => {
             {userLogos?userLogos.map((logos, index) => (
                 <div className='flex flex-wrap gap-2 mx-auto' key={index}>
                     <img onClick={() => handleDownload({image:logos.image})} className='md:w-[14rem] w-[12rem] mx-auto rounded-sm hover:cursor-pointer hover:border-2 border-gray-700 m-1.5' src={logos.image} />
-                    <img onClick={() => handleDownload({image:logos.secondImage})} className='md:w-[14rem] w-[12rem] mx-auto rounded-sm hover:cursor-pointer hover:border-2 border-gray-700 m-1.5' src={logos.secondImage} />
                 </div>
             )):
             <div className='h-[14rem] w-[100%] flex justify-center items-center'>

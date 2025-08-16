@@ -11,6 +11,7 @@ import LogoDesign from './LogoDesign'
 import LogoIdea from './LogoIdea'
 import PricingPlan from './PricingPlan'
 import Footer from '@/components/Footer'
+import { Suspense } from 'react'
 
 const page = () => {
 
@@ -31,10 +32,11 @@ const page = () => {
 
         <div className='w-full'>
             <Navbar />
-
+            <div className='fixed opacity-80 md:text-base text-xs top-[3.5rem] text-black font-bold bg-red-600'>&#9888;Important&#9888; Please Fill All The Fields To Generate The Logo Without Any Issues &#9888;</div>
             <Card className="md:w-[45%] w-[90%] mx-auto md:mt-[14rem] md:mb-[16rem] mt-[12rem] mb-[16rem]">
+                <Suspense fallback={<div>Loading...</div>}>
                 {step == 1 ?
-                    <LogoTitle handleInputChange={(value)=>handleInputChange('title',value)}/> :
+                  <LogoTitle handleInputChange={(value)=>handleInputChange('title',value)}/> :
                 step == 2 ?
                   <LogoDesc handleInputChange={(value)=>handleInputChange('description',value)} formDesc={formData.description}/> :
                 step == 3 ?
@@ -52,9 +54,10 @@ const page = () => {
                       {step!=1 && <Button onClick={()=>{setstep(step-1)}} variant="outline" className="hover:cursor-pointer">Previous</Button>}
                     </div>
                     <div className="flex flex-wrap items-center gap-2">
-                        <Button onClick={()=>{setstep(step+1)}} className="hover:cursor-pointer">Next</Button>
+                        {step!=6 && <Button onClick={()=>{setstep(step+1)}} className="hover:cursor-pointer">Next</Button>}
                     </div>
                 </CardContent>
+                </Suspense>
             </Card>
             <Footer/>
         </div>
